@@ -88,12 +88,30 @@ def main():
     """
     Función principal para ejecutar el parser.
     """
+    # Pedir la ruta relativa del archivo al usuario
+    print("=== CONVERTIDOR: ECUACIÓN → TABLA ===")
+    print("Ingresa la ruta relativa del archivo con la ecuación de búsqueda")
+    print("Ejemplo: bci.txt, data/search.txt, ../equations/query.txt")
+    file_path = input("Ruta del archivo: ").strip()
+    
+    if not file_path:
+        print("Error: Debes proporcionar una ruta de archivo")
+        return
+    
+    # Convertir a ruta absoluta desde el directorio actual
+    import os
+    abs_file_path = os.path.abspath(file_path)
+    
     # Leer la ecuación desde el archivo
     try:
-        with open('/home/oscar/Documents/ecuation2table/bci.txt', 'r', encoding='utf-8') as file:
+        with open(abs_file_path, 'r', encoding='utf-8') as file:
             equation = file.read().strip()
     except FileNotFoundError:
-        print("Error: No se encontró el archivo bci.txt")
+        print(f"Error: No se encontró el archivo {file_path}")
+        print(f"Ruta absoluta buscada: {abs_file_path}")
+        return
+    except Exception as e:
+        print(f"Error al leer el archivo: {e}")
         return
     
     print("Ecuación original:")
@@ -111,13 +129,19 @@ def main():
     print("-" * 80)
     print(df.to_string(index=False))
     
+    # Generar nombres de archivo de salida basados en el archivo de entrada
+    base_name = os.path.splitext(os.path.basename(file_path))[0]
+    
+    csv_output = f"{base_name}_table.csv"
+    xlsx_output = f"{base_name}_table.xlsx"
+    
     # Guardar en CSV
-    save_to_csv(df, '/home/oscar/Documents/ecuation2table/bci_table.csv')
+    save_to_csv(df, csv_output)
     
     # Guardar versión Excel si es posible
     try:
-        df.to_excel('/home/oscar/Documents/ecuation2table/bci_table.xlsx', index=False)
-        print(f"Tabla también guardada en Excel: bci_table.xlsx")
+        df.to_excel(xlsx_output, index=False)
+        print(f"Tabla también guardada en Excel: {xlsx_output}")
     except ImportError:
         print("Nota: Para guardar en Excel, instala openpyxl: pip install openpyxl")
 
