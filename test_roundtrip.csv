@@ -1,0 +1,29 @@
+AND_Group_1,AND_Group_2,AND_Group_3,AND_Group_4,AND_Group_5
+brain computer interface*,electroencephalograph*,machine learning,P300,prosthes*
+brain-computer interface*,EEG,deep learning,motor imager*,wheelchair*
+BCI,event related potential*,artificial intelligence,steady state visual evoked potential*,mobility aid*
+brain machine interface*,ERP,neural network*,SSVEP,assistive technolog*
+brain-machine interface*,event-related potential*,convolutional neural network*,event related desynchronization,rehabilitation
+BMI,sensorimotor rhythm*,CNN,ERD,stroke rehabilitation
+neural interface*,SMR,recurrent neural network*,event related synchronization,neurorehabilitation
+neural prosthe*,motor cortex,RNN,ERS,communication aid*
+neuroprosthe*,,long short term memory,sensorimotor rhythm*,smart home*
+,,LSTM,mu rhythm*,virtual reality
+,,support vector machine*,beta rhythm*,VR
+,,SVM,,augmented reality
+,,random forest,,AR
+,,classification algorithm*,,robotic*
+,,pattern recognition,,exoskeleton*
+,,signal processing,,cursor control
+,,feature extraction,,speller
+,,,,typing
+,,,,navigation
+,,,,environmental control
+,,,,neuroprosthetic*
+,,,,real time
+,,,,real-time
+,,,,adaptive system*
+,,,,calibration
+,,,,online
+,,,,closed loop
+,,,,feedback
