@@ -215,7 +215,11 @@ def main():
     # Generar nombres de archivo de salida basados en el archivo de entrada
     base_name = os.path.splitext(os.path.basename(input_file))[0]
     
-    equation_file = f"{base_name}_equation.txt"
+    # Crear carpeta outputs si no existe
+    output_dir = "outputs"
+    os.makedirs(output_dir, exist_ok=True)
+    
+    equation_file = os.path.join(output_dir, f"{base_name}_equation.txt")
     
     # Guardar archivo
     save_equation_to_file(equation, equation_file, pretty_format=False)

@@ -52,8 +52,8 @@ python ecuacion2table.py
   - `../equations/query.txt`
 
 **Salida:**
-- `{nombre}_table.csv` - Tabla en formato CSV
-- `{nombre}_table.xlsx` - Tabla en formato Excel
+- `outputs/{nombre}_table.csv` - Tabla en formato CSV
+- `outputs/{nombre}_table.xlsx` - Tabla en formato Excel
 
 ### Convertir Tabla → Ecuación
 
@@ -69,7 +69,7 @@ python table2ecuation.py
   - `../data/search_table.csv`
 
 **Salida:**
-- `{nombre}_equation.txt` - Ecuación en una línea
+- `outputs/{nombre}_equation.txt` - Ecuación en una línea
 
 ### Script Unificado (Opcional)
 
@@ -100,11 +100,13 @@ python converter.py --help
 ```
 ecuation2table/
 ├── .venv/                    # Entorno virtual
+├── outputs/                  # Carpeta de archivos generados (excluida en git)
 ├── requirements.txt          # Dependencias del proyecto
 ├── bci.txt                   # Archivo de ejemplo
 ├── ecuacion2table.py         # Convertidor ecuación → tabla
 ├── table2ecuation.py         # Convertidor tabla → ecuación
 ├── converter.py              # Script unificado
+├── .gitignore                # Archivos excluidos del control de versiones
 └── README.md                 # Este archivo
 ```
 
@@ -135,6 +137,8 @@ ecuation2table/
 - ✅ **Estadísticas**: Muestra información detallada del procesamiento
 - ✅ **Archivo requirements**: Fácil replicación del entorno
 - ✅ **Una sola salida**: Genera únicamente el archivo de ecuación principal
+- ✅ **Organización de archivos**: Todos los outputs en carpeta `outputs/`
+- ✅ **Control de versiones**: Carpeta `outputs/` excluida del git
 
 ## 🔄 Replicación del Entorno
 

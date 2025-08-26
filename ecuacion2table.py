@@ -132,8 +132,12 @@ def main():
     # Generar nombres de archivo de salida basados en el archivo de entrada
     base_name = os.path.splitext(os.path.basename(file_path))[0]
     
-    csv_output = f"{base_name}_table.csv"
-    xlsx_output = f"{base_name}_table.xlsx"
+    # Crear carpeta outputs si no existe
+    output_dir = "outputs"
+    os.makedirs(output_dir, exist_ok=True)
+    
+    csv_output = os.path.join(output_dir, f"{base_name}_table.csv")
+    xlsx_output = os.path.join(output_dir, f"{base_name}_table.xlsx")
     
     # Guardar en CSV
     save_to_csv(df, csv_output)

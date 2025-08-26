@@ -50,14 +50,18 @@ def equation_to_table(equation_file: str, output_prefix: str = None):
             base_name = Path(equation_file).stem
             output_prefix = f"{base_name}_table"
         
-        csv_file = f"{output_prefix}.csv"
-        xlsx_file = f"{output_prefix}.xlsx"
+        # Crear carpeta outputs si no existe
+        output_dir = Path("outputs")
+        output_dir.mkdir(exist_ok=True)
+        
+        csv_file = output_dir / f"{output_prefix}.csv"
+        xlsx_file = output_dir / f"{output_prefix}.xlsx"
         
         # Guardar archivos
-        eq_parser.save_to_csv(df, csv_file)
+        eq_parser.save_to_csv(df, str(csv_file))
         
         try:
-            df.to_excel(xlsx_file, index=False)
+            df.to_excel(str(xlsx_file), index=False)
             print(f"📊 Tabla Excel guardada: {xlsx_file}")
         except ImportError:
             print("⚠️  Para Excel instala: pip install openpyxl")
@@ -97,15 +101,17 @@ def table_to_equation_converter(table_file: str, output_prefix: str = None):
             base_name = Path(table_file).stem
             output_prefix = f"{base_name}_equation"
         
-        equation_file = f"{output_prefix}.txt"
-        formatted_file = f"{output_prefix}_formatted.txt"
+        # Crear carpeta outputs si no existe
+        output_dir = Path("outputs")
+        output_dir.mkdir(exist_ok=True)
+        
+        equation_file = output_dir / f"{output_prefix}.txt"
         
         # Convertir a ecuación
         equation = t2e.table_to_equation(df)
         
-        # Guardar archivos
-        t2e.save_equation_to_file(equation, equation_file, pretty_format=False)
-        t2e.save_equation_to_file(equation, formatted_file, pretty_format=True)
+        # Guardar archivo
+        t2e.save_equation_to_file(equation, str(equation_file), pretty_format=False)
         
         # Mostrar estadísticas
         t2e.print_statistics(df)
